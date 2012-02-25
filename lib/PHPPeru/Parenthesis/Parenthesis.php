@@ -18,6 +18,8 @@ class Parenthesis
     {
         $queue1 = 0;
         $queue2 = 0;
+        $anterior = "";
+
         //var_export(strlen($inputString)-1);die;
         for ($i = 0; $i <= strlen($inputString)-1; $i++)
         {
@@ -34,6 +36,10 @@ class Parenthesis
                 }
                 else
                 {
+                    if ($anterior == '[')
+                    {
+                        return false;
+                    }
                     $queue1--;
                 }
             }
@@ -44,9 +50,15 @@ class Parenthesis
                 }
                 else
                 {
+                    if ($anterior == '(')
+                    {
+                        return false;
+                    }
                     $queue2--;
                 }
             }
+
+            $anterior = $character;
         }
 
         if ($queue1 == 0 && $queue2 == 0) {

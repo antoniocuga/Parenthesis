@@ -50,4 +50,10 @@ class DescribeParenthesis extends \PHPSpec\Context
         $this->inputString  = "([)]";
         $this->parenthesis->parse($this->inputString)->should->beFalse();
     }
+
+    public function itShouldMatchxyYyYXyYxX()
+    {
+        $this->inputString  = "([][])[]()";
+        $this->parenthesis->parse($this->inputString)->should->beTrue();
+    }
 }
