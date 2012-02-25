@@ -8,10 +8,11 @@ use \Mockery as m;
 class DescribeParenthesis extends \PHPSpec\Context
 {
     protected $parenthesis;
+    protected $inputString  = "(";
 
     public function before()
     {
-        $this->parenthesis = $this->spec(new Parenthesis($inputString));
+        $this->parenthesis = $this->spec(new Parenthesis($this->inputString));
     }
 
     public function itShouldMatchOpenParenthesis()
