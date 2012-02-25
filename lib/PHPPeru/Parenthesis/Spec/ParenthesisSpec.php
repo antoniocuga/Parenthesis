@@ -8,15 +8,46 @@ use \Mockery as m;
 class DescribeParenthesis extends \PHPSpec\Context
 {
     protected $parenthesis;
-    protected $inputString  = "(";
+    protected $inputString;
 
     public function before()
     {
-        $this->parenthesis = $this->spec(new Parenthesis($this->inputString));
+        $this->parenthesis = $this->spec(new Parenthesis());
     }
 
     public function itShouldMatchOpenParenthesis()
     {
-        $this->parenthesis->parse()->should->beFalse();
+        $this->inputString  = "(";
+        $this->parenthesis->parse($this->inputString)->should->beFalse();
+    }
+
+    public function itShouldMatchOpenAndCloseParenthesis()
+    {
+        $this->inputString  = "()";
+        $this->parenthesis->parse($this->inputString)->should->beTrue();
+    }
+
+    public function itShouldMatchOpenOpenAndCloseParenthesis()
+    {
+        $this->inputString  = "(()";
+        $this->parenthesis->parse($this->inputString)->should->beFalse();
+    }
+
+    public function itShouldMatch2And3Parenthesis()
+    {
+        $this->inputString  = "(()))";
+        $this->parenthesis->parse($this->inputString)->should->beFalse();
+    }
+
+    public function itShouldMatchxyYX()
+    {
+        $this->inputString  = "([])";
+        $this->parenthesis->parse($this->inputString)->should->beTrue();
+    }
+
+    public function itShouldMatchxyXY()
+    {
+        $this->inputString  = "([)]";
+        $this->parenthesis->parse($this->inputString)->should->beFalse();
     }
 }
