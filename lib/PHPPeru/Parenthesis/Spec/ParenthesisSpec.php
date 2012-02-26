@@ -3,7 +3,6 @@
 namespace PHPPeru\Parenthesis;
 
 use PHPPeru\Parenthesis\Parenthesis;
-use \Mockery as m;
 
 class DescribeParenthesis extends \PHPSpec\Context
 {

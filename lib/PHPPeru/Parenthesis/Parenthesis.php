@@ -6,12 +6,7 @@ class Parenthesis
 {
     public function parse($inputString)
     {
-        if(!$this->validate($inputString))
-        {
-            return false;
-        }
-
-        return true;
+        return !$this->validate($inputString) ? false : true;
     }
 
     public function validate($inputString)
