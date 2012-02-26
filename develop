@@ -1,1 +1,2 @@
-./phpspec-composer.php lib/PHPPeru/Parenthesis -fdc
+#!/usr/bin/env sh
+php ./phpspec-composer.php lib/PHPPeru/Parenthesis -fdc
