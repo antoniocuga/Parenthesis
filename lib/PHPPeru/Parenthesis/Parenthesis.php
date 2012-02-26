@@ -6,7 +6,7 @@ class Parenthesis
 {
     public function parse($inputString)
     {
-        if(!$this->validateIsEqualCharcterOrCloseCharacter($inputString))
+        if(!$this->validate($inputString))
         {
             return false;
         }
@@ -14,13 +14,11 @@ class Parenthesis
         return true;
     }
 
-    public function validateIsEqualCharcterOrCloseCharacter($inputString)
+    public function validate($inputString)
     {
-        $queue1 = 0;
-        $queue2 = 0;
+        $queue1 = $queue2 = 0;
         $anterior = "";
 
-        //var_export(strlen($inputString)-1);die;
         for ($i = 0; $i <= strlen($inputString)-1; $i++)
         {
             $character = $inputString[$i];
