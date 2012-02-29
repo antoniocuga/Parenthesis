@@ -2,3 +2,4 @@
 composer.lock
 vendor/*
 !vendor/vendors.php
+composer.phar
