@@ -10,54 +10,34 @@ class Parenthesis
     }
 
     public function validate($inputString)
-    {
-        $queue1 = $queue2 = 0;
-        $anterior = "";
 
-        for ($i = 0; $i <= strlen($inputString)-1; $i++)
-        {
-            $character = $inputString[$i];
+   {
+        $findString=array("()", "[]","{}");
 
-            if (!($queue1 >= 0 && $queue2 >= 0)) {
-                return false;
+
+        if(strlen($inputString)%2!=0){
+
+           return false;
+
+        }else{
+
+            $repeat=strlen($inputString)/2;
+           
+            for($i=0;$i<=$repeat;$i++){
+
+                $inputString = str_replace($findString,"", $inputString);
             }
 
-            if ($character == '(' || $character == ')') {
-                if ($character == '(')
-                {
-                    $queue1++;
-                }
-                else
-                {
-                    if ($anterior == '[')
-                    {
-                        return false;
-                    }
-                    $queue1--;
-                }
-            }
-            else {
-                if ($character == '[')
-                {
-                    $queue2++;
-                }
-                else
-                {
-                    if ($anterior == '(')
-                    {
-                        return false;
-                    }
-                    $queue2--;
-                }
+            if($inputString==""){
+
+                return true;
+
             }
 
-            $anterior = $character;
+            return false;
+
         }
 
-        if ($queue1 == 0 && $queue2 == 0) {
-            return true;
-        }
-
-        return false;
+        
     }
 }
